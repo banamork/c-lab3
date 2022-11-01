@@ -37,10 +37,6 @@ int main(){
                 dia.set_normal(user_5);
                 break;
             case 6:
-                break;
-            case 7:
-                break;
-            case 8:
                 int number;
                 cout << "Set amount:" << endl;
                 cin >> number;
@@ -52,13 +48,13 @@ int main(){
                     dia.copy(number);
                     break;
                 }
-            case 9:
+            case 7:
                 int timel;
                 cout << "Set time:" << endl;
                 cin >> timel;
                 dia.move_left(timel);
                 break;
-            case 10:
+            case 8:
                 int timer;
                 cout << "Set time:" << endl;
                 cin >> timer;

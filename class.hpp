@@ -103,9 +103,9 @@ class timing_diagram{
             }
             else return 1;
         }
-        int move_left(int number){
+        int move_right(int number){
             if(durability - number > 0){
-                while(number != 0){
+                while(number >= 0){
                     int i = 0;
                     unsigned char choice = signal[i];
                     int del;
@@ -120,28 +120,27 @@ class timing_diagram{
                             del = time[0];
                             break;
                         default:
+                            del = time[0];
                             break;
                     }
-                    int t;
-                    for(int j = 0; i < nsize; j++){
-                        t = signal[j];
-                        signal[j] = signal[j+1];
-                        signal[j+1] = t;  
-                        number = number - del;
-                        nsize = nsize - 1;
+                    number = number - del;
+                    unsigned char tmp;
+                    tmp = signal[msize - 1];
+                    for (int i = msize - 1; i >= 0; i--){
+                        signal[i] = signal[i-1];
                     }
+                    signal[0] = tmp;
                 }
                 return 0;
             }
             else return 1;
         }
-        int move_right(int number){
+        int move_left(int number){
             if(durability - number > 0){
-                while(number != 0){
+                while(number >= 0){
                     int i = 0;
                     unsigned char choice = signal[i];
                     int del;
-                    for (number; number = 0 ; number = number - del){
                     switch(choice){
                         case '0':
                             del = time[1];
@@ -153,16 +152,16 @@ class timing_diagram{
                             del = time[0];
                             break;
                         default:
+                            del = time[0];
                             break;
                     }
-                    unsigned char a = signal[0];
-                        if (i == nsize - 1){
-                            signal[i] = a;
-                            break;
-                        }
-                    signal[i] = signal[i + 1];
-                    i++;
+                    number = number - del;
+                    unsigned char tmp;
+                    tmp = signal[0];
+                    for (int i = 0; i <= msize; i++){
+                        signal[i] = signal[i + 1];
                     }
+                    signal[msize - 1] = tmp;
                 }
                 return 0;
             }
