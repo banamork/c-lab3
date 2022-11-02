@@ -1,15 +1,37 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
 class timing_diagram{
     public:
-        void classiq(char classiq = '1'){
-            for(int i = 0; i <= msize; i++){
+        timing_diagram(){
+            unsigned char classiq = '1';
+            for(int i = 0; i <= 16; i++){
                 signal[i] = classiq;
                 nsize = nsize + 1;
                 durability = durability + time[2];
+            }
+        }
+        ~timing_diagram(){
+            unsigned char free_element;
+            unsigned char del_element;
+            for(int i = 0; i <= nsize; i++){
+                del_element = signal[i];
+                signal[i] = free_element;
+                nsize = nsize - 1;
+                switch(del_element){
+                    case '0':
+                        durability = durability - time[1];
+                        break;
+                    case '1':
+                        durability = durability - time[2];
+                        break;
+                    case 'x':
+                        durability = durability - time[0];
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         int set_durability(unsigned char user_choice){
@@ -83,8 +105,26 @@ class timing_diagram{
             }
         }
         void print(){
-            for (int i = 0; i < msize; i++){
+            unsigned char t;
+            unsigned char del_time;
+            for (int i = 0; i < nsize; i++){
                 cout << signal[i] << " ";
+                del_time = signal[i];
+                signal[i] = t;
+                nsize = nsize - 1;
+                switch(del_time){
+                    case '0':
+                        durability = durability - time[1];
+                        break;
+                    case '1':
+                        durability = durability - time[2];
+                        break;
+                    case 'x':
+                        durability = durability - time[0];
+                        break;
+                    default:
+                        break;
+                }
             }
             cout << endl;
             cout << durability << endl;

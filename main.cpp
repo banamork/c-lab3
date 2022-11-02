@@ -16,8 +16,8 @@ int main(){
                 break;
             case 2:
                 unsigned char user_2;
-                cin >> user_2;
                 cout << "Enter your signal:" << endl;
+                cin >> user_2;
                 dia.set_durability(user_2);
                 break;
             case 3:
@@ -32,7 +32,7 @@ int main(){
                 break;
             case 5:
                 unsigned char user_5;
-                cout << "Get me your signal" << endl;
+                cout << "Get me one of your signal:" << endl;
                 cin >> user_5;
                 dia.set_normal(user_5);
                 break;
