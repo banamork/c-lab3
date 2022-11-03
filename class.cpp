@@ -126,6 +126,7 @@ void timing_diagram::print(){
                 break;
         }
     }
+    memset(signal, '-', 32);
     cout << endl;
     cout << nsize << endl;
     nsize = 0;
